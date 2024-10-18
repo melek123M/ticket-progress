@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Mon Plan</title>
+</head>
+
+<body>
+  <h1 class="title">Tableau de bord</h1>
+  <div class="boxs" id="boxs">
+    <div class="backlog" id="backlog">
+      <ul class="backlog-items" id="backlog-items">
+        <li class="backlog-item" id="first-backlog-item">backlog-item</li>
+      </ul>
+      <button class="btn-add-item" onclick="openForm('backlog-items')">+ add item</button>
+    </div>
+    <div class="progress" id="progress">
+      <ul class="progress-items" id="progress-items">
+        <li class="progress-item" id="first-progress-item">progress-item</li>
+      </ul>
+      <button class="btn-add-item" onclick="openForm('progress-items')">+ add item</button>
+    </div>
+    <div class="complete" id="complete">
+      <ul class="complete-items" id="complete-items">
+        <li class="complete-item" id="first-complete-item">complete-item</li>
+      </ul>
+      <button class="btn-add-item" onclick="openForm('complete-items')">+ add item</button>
+    </div>
+    <div class="on-hold" id="on-hold">
+      <ul class="on-hold-items" id="on-hold-items">
+        <li class="on-hold-item" id="first-on-hold-item">on-hold-item</li>
+      </ul>
+      <button class="btn-add-item" onclick="openForm('on-hold-items')">+ add item</button>
+    </div>
+  </div>
+  <div class="form-popup" id="myForm">
+    <form action="/action_page.php" class="form-container">
+      <h1>Add New Item</h1>
+      <input type="hidden" value="" id="id-box-to-add">
+      <label for="title"><b>title</b></label>
+      <input type="text" placeholder="Enter title" id="titel" name="title" value="" required onkeyup="affectValue()">
+
+      <label for="description"><b>description</b></label>
+      <textarea id="description" name="description" rows="4" cols="50" onkeyup="affectValue()">
+        </textarea>
+      <button type="button" class="btn" onclick="addItem()">ajout</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
