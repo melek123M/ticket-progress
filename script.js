@@ -1,7 +1,8 @@
-localStorage.setItem("backlogItems", []);
-localStorage.setItem("progressItems", []);
-localStorage.setItem("completeItems", []);
-localStorage.setItem("holdingItems", []);
+//load data
+window.onload = function () {
+  showData();
+};
+// addItem
 function addItem() {
   ulId = document.getElementById("id-box-to-add").getAttribute("value");
   title = document.getElementById("titel").value;
@@ -15,15 +16,13 @@ function addItem() {
   liItem.classList.add("backlog-item");
   liItem.textContent = title;
   ulItem.appendChild(liItem);
-  storeData(uniqueId);
+  storeData(uniqueId, ulId);
   closeForm();
 }
-function openForm(ulId, storageName, formTitleContent) {
+function openForm(ulId, formTitleContent) {
   clearInput();
   const idBoxToAdd = document.getElementById("id-box-to-add");
-  const storageNameToAdd = document.getElementById("storage-name-to-add");
   idBoxToAdd.value = ulId;
-  storageNameToAdd.value = storageName;
   const formTitle = document.getElementById("form-title");
   formTitle.textContent = "Add Item To " + formTitleContent;
   document.getElementById("myForm").style.display = "block";
@@ -38,23 +37,38 @@ function clearInput() {
   document.getElementById("description").value = "";
   document.getElementById("titel").value = "";
 }
-function storeData(uniqueId) {
-  storageName = document
-    .getElementById("storage-name-to-add")
-    .getAttribute("value");
+//storeData
+function storeData(uniqueId, ulId) {
+  console.log("storedata");
   const obj = {
     id: uniqueId,
     title: title,
     description: description,
+    ulId: ulId,
   };
-  let storageItems = localStorage.getItem(storageName);
-  if (storageItems) {
-    storageItems = JSON.parse(storageItems);
+  let items = localStorage.getItem("items");
+  if (items) {
+    items = JSON.parse(items);
   } else {
-    storageItems = [];
+    items = [];
   }
-  storageItems.push(obj);
-  localStorage.setItem(storageName, JSON.stringify(storageItems));
+  console.log(items);
+  items.push(obj);
+  localStorage.setItem("items", JSON.stringify(items));
+}
+//show items
+function showData() {
+  const items = JSON.parse(localStorage.getItem("items")) || [];
+  items.forEach((item) => {
+    const ulItem = document.getElementById(item.ulId);
+    const liItem = document.createElement("li");
+    liItem.setAttribute("draggable", "true");
+    liItem.setAttribute("ondragstart", "drag(event)");
+    liItem.setAttribute("id", item.id);
+    liItem.classList.add("backlog-item");
+    liItem.textContent = item.ulId;
+    ulItem.appendChild(liItem);
+  });
 }
 //drag and drop
 

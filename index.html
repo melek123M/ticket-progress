@@ -16,32 +16,31 @@
       <ul class="backlog-items" id="backlog-items" ondrop="drop(event)" ondragover="allowDrop(event)">
         <li class="backlog-item" id="first-backlog-item">backlog-item</li>
       </ul>
-      <button class="btn-add-item" onclick="openForm('backlog-items','backlogItems','backlog-item')">+ add item</button>
+      <button class="btn-add-item" onclick="openForm('backlog-items','backlog-item')">+ add item</button>
     </div>
     <div class="progress" id="progress">
       <ul class="progress-items" id="progress-items" ondrop="drop(event)" ondragover="allowDrop(event)">
         <li class="progress-item" id="first-progress-item">progress-item</li>
       </ul>
-      <button class="btn-add-item" onclick="openForm('progress-items','progressItems','progress-item')">+ add item</button>
+      <button class="btn-add-item" onclick="openForm('progress-items','progress-item')">+ add item</button>
     </div>
     <div class="complete" id="complete">
       <ul class="complete-items" id="complete-items" ondrop="drop(event)" ondragover="allowDrop(event)">
         <li class="complete-item" id="first-complete-item">complete-item</li>
       </ul>
-      <button class="btn-add-item" onclick="openForm('complete-items','completeItems','complete-item')">+ add item</button>
+      <button class="btn-add-item" onclick="openForm('complete-items','complete-item')">+ add item</button>
     </div>
     <div class="on-hold" id="on-hold">
       <ul class="on-hold-items" id="on-hold-items" ondrop="drop(event)" ondragover="allowDrop(event)">
         <li class="on-hold-item" id="first-on-hold-item">on-hold-item</li>
       </ul>
-      <button class="btn-add-item" onclick="openForm('on-hold-items','holdingItems','on-hold-item')">+ add item</button>
+      <button class="btn-add-item" onclick="openForm('on-hold-items','on-hold-item')">+ add item</button>
     </div>
   </div>
   <div class="form-popup" id="myForm">
     <form action="/action_page.php" class="form-container">
       <h1 id="form-title"></h1>
       <input type="hidden" value="" id="id-box-to-add">
-      <input type="hidden" value="" id="storage-name-to-add">
       <label for="title"><b>title</b></label>
       <input type="text" placeholder="Enter title" id="titel" name="title" value="" required>
 
