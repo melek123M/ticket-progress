@@ -88,6 +88,12 @@ function drop(ev) {
 
   if (ev.target.tagName === "UL") {
     ev.target.appendChild(draggedElement);
+    const items = JSON.parse(localStorage.getItem("items")) || [];
+    const foundItem = items.find((item) => item.id === draggedElement.id);
+    foundItem.ulId = ev.target.id;
+    console.log(foundItem);
+    localStorage.setItem("items", JSON.stringify(items));
+    console.log(items);
   } else {
     console.warn("Drop target is not a valid <ul>.");
   }
