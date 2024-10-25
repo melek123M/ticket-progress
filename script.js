@@ -3,10 +3,8 @@ window.onload = function () {
   showData();
 };
 // addItem
-function addItem() {
-  ulId = document.getElementById("id-box-to-add").getAttribute("value");
-  title = document.getElementById("titel").value;
-  description = document.getElementById("description").value;
+function addItem(ulId, textAreaId, btnAddId, btnStoreId) {
+  title = document.getElementById(textAreaId).value;
   const ulItem = document.getElementById(ulId);
   const liItem = document.createElement("li");
   const uniqueId = `item-${Date.now()}`;
@@ -16,34 +14,28 @@ function addItem() {
   liItem.classList.add("backlog-item");
   liItem.textContent = title;
   ulItem.appendChild(liItem);
-  storeData(uniqueId, ulId);
-  closeForm();
+  storeData(uniqueId, ulId, title);
+  closeForm(btnAddId, btnStoreId, textAreaId);
 }
-function openForm(ulId, formTitleContent) {
-  clearInput();
-  const idBoxToAdd = document.getElementById("id-box-to-add");
-  idBoxToAdd.value = ulId;
-  const formTitle = document.getElementById("form-title");
-  formTitle.textContent = "Add Item To " + formTitleContent;
-  document.getElementById("myForm").style.display = "block";
-}
-
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
+function openForm(btnAdd, btnStore, idToShow) {
+  document.getElementById(btnAdd).style.display = "none";
+  document.getElementById(btnStore).style.display = "block";
+  document.getElementById(idToShow).value = "";
+  document.getElementById(idToShow).style.display = "block";
+  document.getElementById(idToShow).focus();
 }
 
-function clearInput() {
-  document.getElementById("id-box-to-add").value = "";
-  document.getElementById("description").value = "";
-  document.getElementById("titel").value = "";
+function closeForm(btnAddId, btnStoreId, textAreaId) {
+  document.getElementById(btnStoreId).style.display = "none";
+  document.getElementById(textAreaId).style.display = "none";
+  document.getElementById(btnAddId).style.display = "block";
 }
+
 //storeData
-function storeData(uniqueId, ulId) {
-  console.log("storedata");
+function storeData(uniqueId, ulId, title) {
   const obj = {
     id: uniqueId,
     title: title,
-    description: description,
     ulId: ulId,
   };
   let items = localStorage.getItem("items");
@@ -52,7 +44,6 @@ function storeData(uniqueId, ulId) {
   } else {
     items = [];
   }
-  console.log(items);
   items.push(obj);
   localStorage.setItem("items", JSON.stringify(items));
 }
@@ -66,7 +57,7 @@ function showData() {
     liItem.setAttribute("ondragstart", "drag(event)");
     liItem.setAttribute("id", item.id);
     liItem.classList.add("backlog-item");
-    liItem.textContent = item.ulId;
+    liItem.textContent = item.title;
     ulItem.appendChild(liItem);
   });
 }

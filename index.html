@@ -16,40 +16,52 @@
       <ul class="backlog-items" id="backlog-items" ondrop="drop(event)" ondragover="allowDrop(event)">
         <li class="backlog-item" id="first-backlog-item">backlog-item</li>
       </ul>
-      <button class="btn-add-item" onclick="openForm('backlog-items','backlog-item')">+ add item</button>
+      <button class="btn-add-item" id="btn-add-backlog-item"
+        onclick="openForm('btn-add-backlog-item','btn-store-backlog-item','new-backlog-item')">+ add
+        item</button>
+      <button class="btn-store-item" id="btn-store-backlog-item"
+        onclick="addItem('backlog-items','new-backlog-item','btn-add-backlog-item','btn-store-backlog-item')">+ save
+        item</button>
+      <textarea name="new-backlog-item" class="new-item" id="new-backlog-item" placeholder="add new items"></textarea>
     </div>
     <div class="progress" id="progress">
       <ul class="progress-items" id="progress-items" ondrop="drop(event)" ondragover="allowDrop(event)">
         <li class="progress-item" id="first-progress-item">progress-item</li>
       </ul>
-      <button class="btn-add-item" onclick="openForm('progress-items','progress-item')">+ add item</button>
+      <button class="btn-add-item" id="btn-add-progress-item"
+        onclick="openForm('btn-add-progress-item','btn-store-progress-item','new-progress-item')">+ add
+        item</button>
+      <button class="btn-store-item" id="btn-store-progress-item"
+        onclick="addItem('progress-items','new-progress-item','btn-add-progress-item','btn-store-progress-item')">+ save
+        item</button>
+      <textarea name="new-progress-item" class="new-item" id="new-progress-item" placeholder="add new items"></textarea>
     </div>
     <div class="complete" id="complete">
       <ul class="complete-items" id="complete-items" ondrop="drop(event)" ondragover="allowDrop(event)">
         <li class="complete-item" id="first-complete-item">complete-item</li>
       </ul>
-      <button class="btn-add-item" onclick="openForm('complete-items','complete-item')">+ add item</button>
+      <button class="btn-add-item" id="btn-add-complete-item"
+        onclick="openForm('btn-add-complete-item','btn-store-complete-item','new-complete-item')">+ add
+        item</button>
+      <button class="btn-store-item" id="btn-store-complete-item"
+        onclick="addItem('complete-items','new-complete-item','btn-add-complete-item','btn-store-complete-item')">+ save
+        item</button>
+      <textarea name="new-complete-item" class="new-item" id="new-complete-item" placeholder="add new items"></textarea>
     </div>
     <div class="on-hold" id="on-hold">
       <ul class="on-hold-items" id="on-hold-items" ondrop="drop(event)" ondragover="allowDrop(event)">
         <li class="on-hold-item" id="first-on-hold-item">on-hold-item</li>
       </ul>
-      <button class="btn-add-item" onclick="openForm('on-hold-items','on-hold-item')">+ add item</button>
+      <button class="btn-add-item" id="btn-add-on-hold-item"
+        onclick="openForm('btn-add-on-hold-item','btn-store-on-hold-item','new-on-hold-item')">+ add
+        item</button>
+      <button class="btn-store-item" id="btn-store-on-hold-item"
+        onclick="addItem('on-hold-items','new-on-hold-item','btn-add-on-hold-item','btn-store-on-hold-item')">+ save
+        item</button>
+      <textarea name="new-on-hold-item" class="new-item" id="new-on-hold-item" placeholder="add new items"></textarea>
     </div>
   </div>
   <div class="form-popup" id="myForm">
-    <form action="/action_page.php" class="form-container">
-      <h1 id="form-title"></h1>
-      <input type="hidden" value="" id="id-box-to-add">
-      <label for="title"><b>title</b></label>
-      <input type="text" placeholder="Enter title" id="titel" name="title" value="" required>
-
-      <label for="description"><b>description</b></label>
-      <textarea id="description" name="description" rows="4" cols="50">
-        </textarea>
-      <button type="button" class="btn" onclick="addItem()">ajout</button>
-      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-    </form>
   </div>
   <script src="script.js"></script>
 </body>

@@ -10,9 +10,16 @@ body {
   background: whitesmoke;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* style boxs */
 .title {
   text-align: center;
+  margin-top: 20px;
   color: rgba(0, 0, 0);
 }
 
@@ -40,13 +47,14 @@ ul {
   width: 250px;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 5%;
-
+  min-height: 60px;
 }
 
 .progress {
   width: 250px;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 5%;
+  min-height: 60px;
 
 }
 
@@ -54,6 +62,7 @@ ul {
   width: 250px;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 5%;
+  min-height: 60px;
 
 }
 
@@ -61,6 +70,7 @@ ul {
   width: 250px;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 5%;
+  min-height: 60px;
 
 }
 
@@ -89,21 +99,34 @@ ul {
   cursor: pointer;
 }
 
-/* form style */
-
-.form-container {
-  display: block;
-  margin: auto;
-  max-width: 600px;
+.btn-add-item,
+.btn-store-item {
   padding: 10px;
-  background-color: white;
+  margin: 0 0 10px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
-.form-container h1 {
-  text-align: center;
+.btn-add-item:hover,
+.btn-store-item:hover {
+  background-color: black;
+  border-radius: 5px;
 }
 
-.form-container input[type=text],
+.btn-add-item:active,
+.btn-store-item:active {
+  background-color: red;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.btn-store-item {
+  display: none;
+}
+
+/* form style */
 textarea {
   width: 95%;
   padding: 15px;
@@ -112,39 +135,9 @@ textarea {
   background: #f1f1f1;
 }
 
-.form-container button {
-  margin: auto;
-  margin-bottom: 15px;
-  display: block;
-  padding: 20px;
-  size: 12px;
-  color: black;
-  width: 50%;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.form-container .btn {
-  background-color: green;
-
-}
-
-.form-container .cancel {
-  background-color: red;
-
-}
-
-.form-container button:hover {
-  opacity: 1;
-}
-
-.form-container input[type=text]:focus textarea {
-  background-color: #ddd;
-  outline: none;
-}
-
-#myForm {
+.new-item {
+  height: 100px;
+  border-radius: 5px;
+  margin: 5px;
   display: none;
-  margin-bottom: 25px;
 }
